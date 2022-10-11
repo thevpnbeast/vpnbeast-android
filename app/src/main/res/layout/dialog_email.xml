@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp"
+    android:paddingBottom="10dp"
+    android:paddingTop="10dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.gridlayout.widget.GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:columnCount="1"
+        android:id="@+id/grdLayoutEmail"
+        tools:ignore="UselessParent">
+
+        <EditText
+            android:id="@+id/edtEmailDialog"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints=""
+            app:layout_row="0"
+            app:layout_column="0"
+            android:gravity="fill_horizontal"
+            android:textColor="@color/colorAccent"
+            android:inputType="textEmailAddress"
+            tools:ignore="LabelFor" />
+
+        <androidx.gridlayout.widget.GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/grdLayoutEmailS"
+            app:columnCount="2">
+
+            <Button
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:id="@+id/btnClearEmail"
+                app:layout_row="0"
+                app:layout_column="0"
+                app:layout_columnWeight="0.5"
+                android:text="@string/text_clear"
+                android:layout_marginEnd="5dp"
+                android:textColor="@color/colorAccent"
+                android:background="@drawable/button_selector_black" />
+
+            <Button
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:id="@+id/btnConfirmEmail"
+                app:layout_row="0"
+                app:layout_column="1"
+                app:layout_columnWeight="0.5"
+                android:text="@string/text_confirm"
+                android:layout_marginStart="5dp"
+                android:textColor="@color/colorAccent"
+                android:background="@drawable/button_selector_black" />
+
+        </androidx.gridlayout.widget.GridLayout>
+    </androidx.gridlayout.widget.GridLayout>
+</LinearLayout>

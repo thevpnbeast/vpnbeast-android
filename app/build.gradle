@@ -1,0 +1,176 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.google.gms.google-services'
+apply plugin: 'com.google.firebase.appdistribution'
+apply plugin: 'com.google.firebase.crashlytics'
+apply from: '../scripts/utils.gradle'
+
+def keystorePropertiesFile = file("keystore.properties");
+def keystoreProperties = new Properties()
+keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+
+android {
+    signingConfigs {
+        release {
+            storeFile = file(keystoreProperties['STORE_FILE'])
+            storePassword = keystoreProperties['STORE_PASSWORD']
+            keyAlias = keystoreProperties['KEY_ALIAS']
+            keyPassword = keystoreProperties['KEY_PASSWORD']
+
+            v1SigningEnabled true
+            v2SigningEnabled true
+        }
+    }
+
+    compileSdkVersion app.compileSdk
+    buildToolsVersion app.buildTools
+
+    def newVersionName = getVersionName()
+    def newVersionCode = getVersionCode()
+
+    defaultConfig {
+        applicationId "com.vpnbeast.android"
+        minSdkVersion app.minSdk
+        targetSdkVersion app.targetSdk
+
+        // versionCode must be incremented manually when releasing to prod
+        versionCode newVersionCode
+        versionName newVersionName
+        multiDexEnabled true
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField 'String', 'CONTENT_TYPE', '"application/json"'
+        buildConfigField 'String', 'DO_LOGIN_METHOD', methods.doLoginMethod
+        buildConfigField 'String', 'DO_REFRESH_METHOD', methods.doRefreshMethod
+        buildConfigField 'String', 'DO_REGISTER_METHOD', methods.doRegisterMethod
+        buildConfigField 'String', 'DO_VERIFY_METHOD', methods.doVerifyMethod
+        buildConfigField 'String', 'DO_RESEND_VERIFICATION_CODE_METHOD', methods.doResendVerificationCodeMethod
+        buildConfigField 'String', 'DO_RESET_PASSWORD_METHOD', methods.doResetPasswordMethod
+        buildConfigField 'String', 'GET_ALL_SERVERS_METHOD', methods.getAllServersMethod
+        buildConfigField 'String', 'GET_SINGLE_SERVER_METHOD', methods.getSingleServerMethod
+
+        firebaseAppDistribution {
+            serviceCredentialsFile = "$rootDir/app/vpnbeast-android-6f673-5ba69b21279b.json"
+            // releaseNotesFile = "$rootDir/app/release_notes.txt"
+            testers = "bilalccaliskan@gmail.com"
+        }
+    }
+
+    buildTypes {
+        debug {
+            debuggable true
+        }
+
+        release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+    }
+
+    flavorDimensions 'default'
+    productFlavors {
+        dev {
+            dimension "default"
+
+            buildConfigField 'String', 'DOMAIN', domains.devDomain
+            buildConfigField 'String', 'DO_LOGIN_URI', uris.doLoginUri
+            buildConfigField 'String', 'DO_REFRESH_URI', uris.doRefreshUri
+            buildConfigField 'String', 'DO_REGISTER_URI', uris.doRegisterUri
+            buildConfigField 'String', 'DO_VERIFY_URI', uris.doVerifyUri
+            buildConfigField 'String', 'DO_RESEND_VERIFICATION_CODE_URI', uris.doResendVerificationCodeUri
+            buildConfigField 'String', 'DO_RESET_PASSWORD_URI', uris.doResetPasswordUri
+            buildConfigField 'String', 'GET_ALL_SERVERS_URI', uris.getAllServersUri
+            buildConfigField 'String', 'GET_SINGLE_SERVER_URI', uris.getSingleServerUri
+        }
+
+        prod {
+            dimension "default"
+            buildConfigField 'String', 'DOMAIN', domains.prodDomain
+            buildConfigField 'String', 'DO_LOGIN_URI', uris.doLoginUri
+            buildConfigField 'String', 'DO_REFRESH_URI', uris.doRefreshUri
+            buildConfigField 'String', 'DO_REGISTER_URI', uris.doRegisterUri
+            buildConfigField 'String', 'DO_VERIFY_URI', uris.doVerifyUri
+            buildConfigField 'String', 'DO_RESEND_VERIFICATION_CODE_URI', uris.doResendVerificationCodeUri
+            buildConfigField 'String', 'DO_RESET_PASSWORD_URI', uris.doResetPasswordUri
+            buildConfigField 'String', 'GET_ALL_SERVERS_URI', uris.getAllServersUri
+            buildConfigField 'String', 'GET_SINGLE_SERVER_URI', uris.getSingleServerUri
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility java.sourceCompatibility
+        targetCompatibility java.targetCompatibility
+    }
+
+    sourceSets {
+        main {
+            assets.srcDirs = ['src/main/assets', 'ovpnlibs/assets']
+            jniLibs.srcDirs = ['ovpnlibs/jniLibs']
+            jni.srcDirs = [] //disable automatic ndk-build
+        }
+
+        debug {
+
+        }
+
+        release {
+
+        }
+    }
+}
+
+dependencies {
+    androidTestImplementation('androidx.test.espresso:espresso-core:3.1.0', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'com.loopj.android:android-async-http:1.4.9'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    testImplementation group: 'junit', name: 'junit', version: '4.13'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    implementation 'androidx.localbroadcastmanager:localbroadcastmanager:1.0.0'
+    implementation 'com.google.android.gms:play-services-gcm:17.0.0'
+    implementation 'com.google.android.gms:play-services-location:18.0.0'
+    implementation 'com.google.firebase:firebase-crashlytics:17.3.1'
+    compile 'org.projectlombok:lombok:1.18.12'
+    annotationProcessor 'org.projectlombok:lombok:1.18.12'
+    implementation group: 'com.google.code.gson', name: 'gson', version: '2.8.6'
+    implementation group: 'androidx.gridlayout', name: 'gridlayout', version: '1.0.0'
+}
+
+task postRelease {
+    doLast {
+        incrementVersion()
+        incrementVersionCode()
+    }
+}
+
+task postDebug {
+    doLast {
+        incrementVersion()
+    }
+}
+
+task postReleaseMinor {
+    doLast {
+        incrementVersionMinor()
+        incrementVersionCode()
+    }
+}
+
+task postReleaseMajor {
+    doLast {
+        incrementVersionMajor()
+        incrementVersionCode()
+    }
+}
+
+android.applicationVariants.all { variant ->
+    variant.outputs.all {
+        def flavor = variant.productFlavors[0].name
+        outputFileName = "vpnbeast-android-${flavor}-${variant.versionName}.apk"
+    }
+}

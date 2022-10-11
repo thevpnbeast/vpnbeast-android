@@ -1,0 +1,39 @@
+ext.app = [
+        applicationId : '"com.vpnbeast.android"',
+        minSdk : 17,
+        targetSdk : 29,
+        compileSdk : 29,
+        buildTools : '29.0.3',
+]
+
+ext.java = [
+        sourceCompatibility: JavaVersion.VERSION_1_8,
+        targetCompatibility: JavaVersion.VERSION_1_8,
+]
+
+ext.domains = [
+        devDomain : '"http://192.168.1.41:9090"',
+        prodDomain : '"https://api.thevpnbeast.com"'
+]
+
+ext.methods = [
+        doLoginMethod : '"POST"',
+        doRefreshMethod : '"GET"',
+        doRegisterMethod : '"POST"',
+        doVerifyMethod : '"POST"',
+        doResendVerificationCodeMethod : '"POST"',
+        doResetPasswordMethod : '"PUT"',
+        getAllServersMethod : '"GET"',
+        getSingleServerMethod : '"POST"'
+]
+
+ext.uris = [
+        doLoginUri : '"/users/authenticate"',
+        doRefreshUri : '"/users/refresh"',
+        doRegisterUri : '"/users/register"',
+        doVerifyUri : '"/users/verify"',
+        doResendVerificationCodeUri : '"/users/resend-verification-code"',
+        doResetPasswordUri : '"/users/reset-password"',
+        getAllServersUri : '"/servers/all?sortBy=score"',
+        getSingleServerUri : '"/servers/"'
+]

@@ -1,0 +1,35 @@
+<resources>
+
+    <style name="VpnbeastTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorControlNormal">#b0bec5</item>
+        <item name="colorControlActivated">#b0bec5</item>
+        <item name="colorControlHighlight">#b0bec5</item>
+        <item name="android:textColor">#b0bec5</item>
+        <item name="android:itemBackground">@color/colorPrimary</item>
+        <item name="android:alertDialogTheme">@style/VpnbeastAlertDialog</item>
+    </style>
+
+    <style name="VpnbeastAlertDialog">
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:textColor">#b0bec5</item>
+        <item name="android:textColorPrimary">#b0bec5</item>
+        <item name="android:colorBackground">@color/colorDarkerBackground</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+        <item name="android:windowMinWidthMajor">@android:dimen/dialog_min_width_major</item>
+        <item name="android:windowMinWidthMinor">@android:dimen/dialog_min_width_minor</item>
+    </style>
+
+    <style name="VpnbeastProgressBar" parent="@android:style/Widget.ProgressBar">
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:visibility">gone</item>
+        <item name="android:textColor">#b0bec5</item>
+        <item name="android:textColorPrimary">#b0bec5</item>
+        <item name="android:colorBackground">@color/colorDarkerBackground</item>
+        <item name="android:indeterminateDrawable">@drawable/circular_progress_bar</item>
+    </style>
+
+</resources>

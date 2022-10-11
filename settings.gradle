@@ -1,0 +1,2 @@
+rootProject.name='vpnbeast-android'
+include ':app'

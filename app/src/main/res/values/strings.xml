@@ -1,0 +1,169 @@
+<resources>
+    <!-- App-wide string resources -->
+    <string name="app_name">VPN Beast</string>
+    <string name="error">Error</string>
+    
+    
+    <!-- String resources for activity_login.xml -->
+    <string name="text_submit">Submit</string>
+    <string name="text_resend">Resend</string>
+    <string name="text_clear">Clear</string>
+    <string name="text_confirm">Confirm</string>
+    <string name="text_verify_email">Verify Email</string>
+    <string name="text_verification_code">Verification code: </string>
+    <string name="text_remember_me">Remember my credentials</string>
+    <string name="text_password">Password: </string>
+    <string name="text_validate_password">Validate Password: </string>
+    <string name="text_reset_password">Reset Password</string>
+    <string name="text_register">Register</string>
+    <string name="text_username">Username: </string>
+    <string name="text_email">Email: </string>
+    <string name="text_new_password">New Password</string>
+    <string name="text_confirm_new_password">Confirm New Password</string>
+
+    <string name="text_confirm_logout_title">Logout Confirmation</string>
+    <string name="text_confirm_logout_msg">Are you sure that you want to log out from VPN Beast?</string>
+
+    <string name="text_verify_email_title">Verify Email Address</string>
+    <string name="text_verify_email_msg">We have sent an email to %s which contains a verification code, please type the verification code below!</string>
+
+    <string name="text_resend_verification_code_title">Resend Verification Code</string>
+    <string name="text_resend_verification_code_msg">Verification code successfully resent to %s, please check your inbox!</string>
+
+    <string name="text_email_verification_success_title">Verification Success</string>
+    <string name="text_email_verification_success_msg">You have successfully verified your email address %s, enjoy your privacy!</string>
+
+    <string name="text_reset_password_success_title">Reset Password Succeeded</string>
+    <string name="text_reset_password_success_msg">Your password successfully changed, enjoy your privacy!</string>
+
+    <string name="text_provide_email_title">Provide Email Address</string>
+    <string name="text_provide_email_msg">Please provide a registered email address, we will send a verification code to that email address to verify your identity!</string>
+
+    <string name="text_provide_password_title">Provide Password</string>
+    <string name="text_provide_password_msg">Please provide a new password!</string>
+
+    <!-- String resources for activity_main.xml -->
+    <string name="text_connect">Connect</string>
+    <string name="text_logged_in">Logged in as: </string>
+    <string name="text_country">Country: </string>
+    <string name="text_ip">Ip address: </string>
+    <string name="text_port">Port: </string>
+    <string name="text_proto">Proto: </string>
+    <string name="text_server">Server: </string>
+    <string name="text_server_name">Server name: </string>
+    <string name="text_status">Status: </string>
+    <string name="text_reconnect">Reconnect</string>
+    <string name="text_not_connected">Not connected yet</string>
+    <string name="text_null">null</string>
+    <string name="text_initial_timer">00:00:00</string>
+    <string name="text_select">Select</string>
+    <string name="text_bytes_in">Bytes In: </string>
+    <string name="text_bytes_out">Bytes Out: </string>
+    <string name="text_duration">Duration: </string>
+    <string name="text_exit_title">Exit VPN Beast</string>
+    <string name="text_exit_msg">Are you sure that you want to exit from VPN Beast?</string>
+    <string name="text_disconnect_title">Disconnect</string>
+    <string name="text_disconnect_msg">Are you sure that you want to disconnect from connected VPN server?</string>
+    <string name="bytes_total">%s/%s</string>
+
+    <string name="err_connect_cancelled_title">Connection Cancelled</string>
+    <string name="err_connect_cancelled_msg">Connection attempt cancelled, resuming previous activity!</string>
+    <string name="err_connect_failed_title">Connection Failed</string>
+    <string name="err_connect_failed_unknown_msg">Something is wrong with the VPN server, try with another server!</string>
+    <string name="err_both_tokens_expired_msg">Both access token and refresh token expired, you must login again!</string>
+
+    <string name="err_nonetwork_msg">VPN Beast requires an active internet connection, please check your connection!</string>
+    <string name="err_null_verification_code_msg">Please provide a verification code!</string>
+    <string name="err_null_email_msg">Please provide an email address!</string>
+    <string name="err_state_login">\nYour username or password is invalid</string>
+    <string name="err_mandatory_fields">All fields are mandatory, please fill!</string>
+    <string name="err_passwords_mismatch">Passwords do not match!</string>
+    <string name="err_unknown_msg">Unable to process your request right now, please try again later!</string>
+    <string name="err_validation_title">Validation Error</string>
+    <string name="err_validation_msg">Following problems exists, please fix to proceed!\n\n</string>
+    <string name="err_all_msg">Following errors occurred:\n</string>
+    <string name="err_expired_token_msg">Token already expired, can not use it!</string>
+    <string name="err_login_title">Login Error</string>
+    <string name="err_user_not_found_msg">User not found, please register first!</string>
+    <string name="err_password_incorrect">Password is incorrect, please check password!</string>
+    <string name="err_dns_parsing_msg">Error parsing DNS Server IP: </string>
+    <string name="err_add_route_msg">Local IP address unset and received. Neither pushed server config nor local config specifies an IP addresses. Opening tun device is most likely going to fail.</string>
+
+    <string name="warn_location_permission_title">Location permission required</string>
+    <string name="warn_location_permission_msg">This feature requires location privileges to work properly.</string>
+
+    <string name="state_reconnecting">Reconnecting</string>
+    <string name="state_exiting">Exiting</string>
+    <string name="state_noprocess">Not running</string>
+    <string name="state_resolve">Resolving host names</string>
+    <string name="state_tcp_connect">Connecting (TCP)</string>
+    <string name="state_auth_failed">Authentication failed</string>
+    <string name="state_nonetwork">Waiting for usable network</string>
+    <string name="statusline_bytecount">↓%2$s/s %1$s - ↑%4$s/s %3$s</string>
+    <string name="mobile_info">%10$s %9$s running on %3$s %1$s (%2$s), Android %6$s (%7$s) API %4$d, ABI %5$s, (%8$s)</string>
+    <string name="built_by">built by %s</string>
+    <string name="debug_build">debug build</string>
+    <string name="official_build">official build</string>
+    <string name="unhandled_exception">Unhandled exception: %1$s\n\n%2$s</string>
+    <string name="unhandled_exception_context">%3$s: %1$s\n\n%2$s</string>
+    <string name="state_waitconnectretry">Waiting %ss seconds between connection attempt</string>
+    <string name="state_unknown">Unknown State</string>
+    <string name="state_connecting">Connecting</string>
+    <string name="state_user_vpn_permission">User Vpn Permission</string>
+    <string name="state_disconnecting">Disconnecting</string>
+    <string name="state_disconnected">Disconnect</string>
+    <string name="state_connected">Connected</string>
+    <string name="state_add_routes">Adding routes</string>
+    <string name="state_wait">Waiting for server reply</string>
+    <string name="state_waiting">Connecting</string>
+    <string name="state_connecting_msg">Connecting...</string>
+    <string name="state_msg_connecting">Attempting to connect. Please wait about 5 seconds.</string>
+    <string name="disconnect">Disconnect</string>
+    <string name="state_already_connected_msg">There is a VPN server connected. You can start using it by pressing HOME button, or you can disconnect first to return previous activity!</string>
+    <string name="state_msg_disconnecting">Attempting to disconnect. Please wait</string>
+    <string name="state_msg_disconnected">\nYou have disconnected from profile. Starting previous activity</string>
+    <string name="state_auth">Authenticating</string>
+    <string name="state_get_config">Getting client configuration</string>
+    <string name="state_assign_ip">Assigning IP addresses</string>
+    <string name="state_userpause">VPN pause requested by user</string>
+    <string name="state_screenoff">VPN paused - screen off</string>
+    <string name="no_vpn_support_image">Your image does not support the VPNService API, sorry :(</string>
+    <string name="abi_mismatch">Preferred native ABI precedence of this device (%1$s) and ABI reported by native libraries (%2$s) mismatch</string>
+    <string name="state_user_vpn_permission_cancelled">User cancelled permission</string>
+    <string name="state_user_vpn_cancelled">User cancelled VPN</string>
+
+    <string name="notifcation_title_notconnect">Not connected</string>
+    <string name="notifcation_title">VpnBeast - %s</string>
+    <string name="permission_revoked">VPN permission revoked by OS (e.g. other VPN program started), stopping VPN</string>
+    <string name="building_configration">Building configuration…</string>
+    <string name="ignore_multicast_route">Ignoring multicast route: %s</string>
+    <string name="route_rejected">Route rejected by Android</string>
+    <string name="local_ip_info">Local IPv4: %1$s/%2$d IPv6: %3$s MTU: %4$d</string>
+    <string name="dns_server_info">DNS Server: %1$s, Domain: %2$s</string>
+    <string name="routes_info_incl">Routes: %1$s %2$s</string>
+    <string name="routes_info_excl">Routes excluded: %1$s %2$s</string>
+    <string name="routes_debug">VpnService routes installed: %1$s %2$s</string>
+    <string name="session_ipv4string">%1$s - %2$s</string>
+    <string name="session_ipv6string">%1$s - %3$s, %2$s</string>
+    <string name="warn_no_dns">No DNS servers being used. Name resolution may not work. Consider setting custom DNS Servers. Please also note that Android will keep using your proxy settings specified for your mobile/Wi-Fi connection when no DNS servers are set.</string>
+    <string name="tun_open_error">Failed to open the tun interface</string>
+    <string name="tun_error_helpful">On some custom ICS images the permission on /dev/tun might be wrong, or the tun module might be missing completely. For CM9 images try the fix ownership option under general settings</string>
+    <string name="app_no_longer_exists">Package %s is no longer installed, removing it from app allow/disallow list</string>
+    <string name="no_allowed_app">No allowed app added. Adding ourselves (%s) to have at least one app in the allowed app list to not allow all apps</string>
+    <string name="last_openvpn_tun_config">Opening tun interface:</string>
+    <string name="opentun_no_ipaddr">Refusing to open tun device without IP information</string>
+    <string name="dns_add_error">Could not add DNS Server \"%1$s\", rejected by the system: %2$s</string>
+    <string name="disallowed_vpn_apps_info">Disallowed VPN apps: %1$s</string>
+    <string name="allowed_vpn_apps_info">Allowed VPN apps: %1$s</string>
+    <string name="route_not_cidr">Cannot make sense of %1$s and %2$s as IP route with CIDR netmask, using /32 as netmask.</string>
+    <string name="route_not_netip">Corrected route %1$s/%2$s to %3$s/%2$s</string>
+    <string name="ip_not_cidr">Got interface information %1$s and %2$s, assuming second address is peer address of remote. Using /32 netmask for local IP. Mode given by OpenVPN is \"%3$s\".</string>
+    <string name="ip_looks_like_subnet">Vpn topology \"%3$s\" specified but ifconfig %1$s %2$s looks more like an IP address with a network mask. Assuming \"subnet\" topology.</string>
+    <string name="using_proxy">Using proxy %1$s %2$d</string>
+    <string name="service_restarted">Restarting OpenVPN Service (App crashed probably crashed or killed for memory pressure)</string>
+    <string name="ip_add_error">Could not configure IP Address \"%1$s\", rejected by the system: %2$s</string>
+    <string name="novpn_selected">No VPN selected.</string>
+    <string name="qs_disconnect">Disconnect %s</string>
+    <string name="qs_connect">Connect to %s</string>
+
+</resources>

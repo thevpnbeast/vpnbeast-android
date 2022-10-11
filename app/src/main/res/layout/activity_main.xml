@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackground"
+    tools:context="com.vpnbeast.android.activity.MainActivity">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/imgLogo"
+        android:src="@drawable/logo_vpnbeast"
+        android:layout_above="@id/grdLayout"
+        android:layout_alignParentStart="true"
+        android:contentDescription="@string/app_name" />
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:columnCount="2"
+        android:id="@+id/grdLayout"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="40dip"
+        android:layout_marginLeft="40dip"
+        >
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="@string/text_server"
+            android:textColor="@color/colorAccent"
+            android:layout_column="0"
+            android:layout_row="0"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/btnSelectMain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="0"
+            android:layout_column="1"
+            android:layout_gravity="fill_horizontal"
+            android:background="@drawable/button_selector_select"
+            android:text="@string/text_select"
+            android:textStyle="bold"
+            android:textColor="@color/colorAccent" />
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="@string/text_country"
+            android:textColor="@color/colorAccent"
+            android:layout_marginTop="10dp"
+            android:layout_column="0"
+            android:layout_row="1"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtCountryMain"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="@string/text_not_connected"
+            android:layout_gravity="center"
+            android:textColor="@color/colorAccent"
+            android:layout_marginTop="10dp"
+            android:layout_row="1"
+            android:layout_column="1"
+            />
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="@string/text_proto"
+            android:textColor="@color/colorAccent"
+            android:layout_marginTop="10dp"
+            android:layout_column="0"
+            android:layout_row="2"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtProtoMain"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="@string/text_not_connected"
+            android:textColor="@color/colorAccent"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_row="2"
+            android:layout_column="1"
+            />
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="@string/text_ip"
+            android:textColor="@color/colorAccent"
+            android:layout_marginTop="10dp"
+            android:layout_column="0"
+            android:layout_row="3"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtIpMain"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="@string/text_not_connected"
+            android:textColor="@color/colorAccent"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_row="3"
+            android:layout_column="1"
+            />
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="@string/text_port"
+            android:textColor="@color/colorAccent"
+            android:layout_marginTop="10dp"
+            android:layout_column="0"
+            android:layout_row="4"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtPortMain"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="@string/text_not_connected"
+            android:textColor="@color/colorAccent"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_row="4"
+            android:layout_column="1"
+            />
+
+    </GridLayout>
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:columnCount="2"
+        android:id="@+id/grdLayoutS"
+        android:layout_marginRight="40dip"
+        android:layout_marginLeft="40dip"
+        android:layout_below="@+id/grdLayout"
+        android:layout_marginTop="30dip"
+        >
+
+        <Button
+            android:layout_height="75dip"
+            android:layout_width="wrap_content"
+            android:id="@+id/btnConnect"
+            android:layout_gravity="fill_horizontal"
+            android:layout_column="0"
+            android:layout_columnSpan="2"
+            android:text="@string/text_connect"
+            android:background="@drawable/button_selector_grey"
+            android:textColor="@color/colorBackground" />
+
+        <ProgressBar
+            android:id="@+id/progressBarMain"
+            android:layout_row="4"
+            android:layout_column="0"
+            android:layout_marginTop="15dip"
+            android:layout_gravity="center|bottom"
+            android:visibility="invisible" />
+
+    </GridLayout>
+
+</RelativeLayout>

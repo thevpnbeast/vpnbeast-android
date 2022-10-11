@@ -1,0 +1,81 @@
+---
+
+name: PR
+on:
+  pull_request:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Get required files from repository secrets
+        run: |
+          echo "${{ secrets.KEYSTORE_PROPERTIES }}" > app/keystore.properties
+          echo "${{ secrets.UPLOAD_KEYSTORE }}" > app/upload-keystore.jks.asc
+          gpg -d --passphrase "${{ secrets.UPLOAD_KEYSTORE_PASSPHRASE }}" --batch app/upload-keystore.jks.asc > app/upload-keystore.jks
+          echo "${{ secrets.GOOGLE_SERVICES }}" > app/google-services.json.asc
+          gpg -d --passphrase "${{ secrets.GOOGLE_SERVICES_PASSPHRASE }}" --batch app/google-services.json.asc > app/google-services.json
+          echo "${{ secrets.GOOGLE_SERVICE_ACCOUNT }}" > app/vpnbeast-android-6f673-5ba69b21279b.json.asc
+          gpg -d --passphrase "${{ secrets.GOOGLE_SERVICE_ACCOUNT_PASSPHRASE }}" --batch app/vpnbeast-android-6f673-5ba69b21279b.json.asc > app/vpnbeast-android-6f673-5ba69b21279b.json
+      - name: Set up our JDK environment
+        uses: actions/setup-java@v1.4.3
+        with:
+          java-version: 1.8.0.282
+      - name: Lint
+        uses: eskatos/gradle-command-action@v1
+        with:
+          arguments: -Pci --console=plain :app:lintProdDebug -PbuildDir=lint
+          gradle-version: 6.5
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Get required files from repository secrets
+        run: |
+          echo "${{ secrets.KEYSTORE_PROPERTIES }}" > app/keystore.properties
+          echo "${{ secrets.UPLOAD_KEYSTORE }}" > app/upload-keystore.jks.asc
+          gpg -d --passphrase "${{ secrets.UPLOAD_KEYSTORE_PASSPHRASE }}" --batch app/upload-keystore.jks.asc > app/upload-keystore.jks
+          echo "${{ secrets.GOOGLE_SERVICES }}" > app/google-services.json.asc
+          gpg -d --passphrase "${{ secrets.GOOGLE_SERVICES_PASSPHRASE }}" --batch app/google-services.json.asc > app/google-services.json
+          echo "${{ secrets.GOOGLE_SERVICE_ACCOUNT }}" > app/vpnbeast-android-6f673-5ba69b21279b.json.asc
+          gpg -d --passphrase "${{ secrets.GOOGLE_SERVICE_ACCOUNT_PASSPHRASE }}" --batch app/vpnbeast-android-6f673-5ba69b21279b.json.asc > app/vpnbeast-android-6f673-5ba69b21279b.json
+      - name: Set up our JDK environment
+        uses: actions/setup-java@v1.4.3
+        with:
+          java-version: 1.8.0.282
+      - name: Test Prod Debug
+        uses: eskatos/gradle-command-action@v1
+        with:
+          arguments: -Pci --console=plain :app:testProdDebug
+          gradle-version: 6.5
+
+  build:
+    runs-on: ubuntu-latest
+    needs:
+      - lint
+      - test
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Get required files from repository secrets
+        run: |
+          echo "${{ secrets.KEYSTORE_PROPERTIES }}" > app/keystore.properties
+          echo "${{ secrets.UPLOAD_KEYSTORE }}" > app/upload-keystore.jks.asc
+          gpg -d --passphrase "${{ secrets.UPLOAD_KEYSTORE_PASSPHRASE }}" --batch app/upload-keystore.jks.asc > app/upload-keystore.jks
+          echo "${{ secrets.GOOGLE_SERVICES }}" > app/google-services.json.asc
+          gpg -d --passphrase "${{ secrets.GOOGLE_SERVICES_PASSPHRASE }}" --batch app/google-services.json.asc > app/google-services.json
+          echo "${{ secrets.GOOGLE_SERVICE_ACCOUNT }}" > app/vpnbeast-android-6f673-5ba69b21279b.json.asc
+          gpg -d --passphrase "${{ secrets.GOOGLE_SERVICE_ACCOUNT_PASSPHRASE }}" --batch app/vpnbeast-android-6f673-5ba69b21279b.json.asc > app/vpnbeast-android-6f673-5ba69b21279b.json
+      - name: Set up our JDK environment
+        uses: actions/setup-java@v1.4.3
+        with:
+          java-version: 1.8.0.282
+      - name: Build Prod Debug
+        uses: eskatos/gradle-command-action@v1
+        with:
+          arguments: -Pci --console=plain :app:assembleProdDebug
+          gradle-version: 6.5
